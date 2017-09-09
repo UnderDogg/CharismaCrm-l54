@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Auth\User\User;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -59,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => User::class,
         ],
         // 'users' => [
         //     'driver' => 'database',
@@ -87,9 +90,32 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],
+    /*
+     * Configurations for the user
+     */
+    'users' => [
+        /*
+         * Whether or not public registration is on
+         */
+        'registration' => env('ENABLE_REGISTRATION', true),
+
+        /*
+         * The role the user is assigned to when they sign up from the frontend, not namespaced
+         */
+        'default_role' => 'authenticated',
+
+        /*
+         * Whether or not the user has to confirm their email when signing up
+         */
+        'confirm_email' => true,
+
+        /*
+         * Whether or not the users email can be changed on the edit profile screen
+         */
+        'change_email' => false,
+    ],
     ],
 ];

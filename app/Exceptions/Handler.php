@@ -32,6 +32,8 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         parent::report($exception);
+        //send error to developers emails
+        $this->sendReport($exception);
     }
 
     /**
@@ -58,6 +60,25 @@ class Handler extends ExceptionHandler
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
-        return redirect()->guest('login');
+        return redirect()->guest(route('login'));
     }
+
+    /**
+     * Send exception report to emails.
+     *
+     * @param $exception
+     */
+    protected function sendReport($exception)
+    {
+        if (parent::shouldntReport($exception))
+            return;
+        $emails = config('app.debug_emails');
+        if (!$emails)
+            return;
+        $emails = is_string($emails) ? explode(',', $emails) : $emails;
+        \Mail::raw((string)$exception, function ($message) use ($exception, $emails) {
+            $message->to($emails)->subject(config('app.name') . ' ' . config('app.env') . ' | Error ' . class_basename($exception));
+        });
+    }
+
 }

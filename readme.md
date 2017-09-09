@@ -2,6 +2,59 @@
 
 Laravel-gentelella is a Laravel 5.4 application with all Gentelella template components.
 
+## Installation
+1. Install Composer using detailed installation instructions [here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+2. Install Node.js using detailed installation instructions [here](https://nodejs.org/en/download/package-manager/)
+3. Clone repository
+```
+$ git clone https://github.com/Labs64/laravel-boilerplate.git
+```
+4. Change into the working directory
+```
+$ cd laravel-boilerplate
+```
+5. Copy `.env.example` to `.env` and modify according to your environment
+```
+$ cp .env.example .env
+```
+6. Install composer dependencies
+```
+$ composer install --prefer-dist
+```
+7. An application key can be generated with the command
+```
+$ php artisan key:generate
+```
+8. Execute following commands to install other dependencies
+```
+$ npm install
+$ npm run dev
+```
+9. Run these commands to create the tables within the defined database and populate seed data
+```
+$ php artisan migrate --seed
+```
+If you get an error like a `PDOException` try editing your `.env` file and change `DB_HOST=127.0.0.1` to `DB_HOST=localhost` or `DB_HOST=mysql` (for *docker-compose* environment).
+
+## Run
+
+To start the PHP built-in server
+```
+$ php artisan serve --port=8080
+or
+$ php -S localhost:8080 -t public/
+```
+
+
+###UPDATE 2.0
+
+Add auth support !
+
+**WARNING** : For auth support, configure your ```.env``` file with ```database``` and ```smtp``` connection !
+
+
+You are ready for a new Laravel 5.4 application with Gentelella template !!
+
 ## Change log
 
 ### 4.4
@@ -32,6 +85,7 @@ Laravel-gentelella is a Laravel 5.4 application with all Gentelella template com
 - Add Auth support (see **[Update 2.0](#update-20)**)
 
 
+
 ## Gentelella
 
 Gentellela Admin is a free to use Bootstrap admin template.
@@ -59,89 +113,4 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs/5.4).
 
-
-# Installation
-
-## Step 1
-
-### With GIT
-Clone git repository
-
-With Git SSH
-```
-git clone git@github.com:FlorientR/laravel-gentelella.git
-```
-
-Or with HTTPS
-```
-git clone https://github.com/FlorientR/laravel-gentelella.git
-```
-
-Go to the project folder 
-```
-cd laravel-gentelella
-```
-
-Update composer 
-```
-composer update
-```
-
-### With Composer
-```
-composer create-project florientr/laravel-gentelella MyProject
-```
-
-## Step 2
-Copy ```.env.example``` file to ```.env```
-
-For Unix
-```
-cp .env.example .env
-```
-For Windows
-```
-copy .env.example .env
-```
-
-Next, run this follow commands
-
-!! YOU NEED TO INSTALL NODE.JS FOR USE NPM !! 
-
-For install all NPM package
-
-```
-npm install
-```
-
-Or for install just minimal package
-With admin privileges!
-
-```
-npm install --global bower gulp
-npm install gulp
-npm install laravel-elixir
-```
-
-And then, run this commands
-
-```
-php artisan key:generate
-bower install
-gulp
-```
-
-Configure your ```.env``` file and run :
-```
-php artisan migrate
-```
-
-###UPDATE 2.0
-
-Add auth support !
-
-**WARNING** : For auth support, configure your ```.env``` file with ```database``` and ```smtp``` connection !
-
-
-You are ready for a new Laravel 5.4 application with Gentelella template !!
 

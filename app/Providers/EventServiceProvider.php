@@ -1,6 +1,14 @@
 <?php
 namespace App\Providers;
 
+use App\Events\Auth\SocialLogin;
+use App\Listeners\Auth\LoginListener;
+use App\Listeners\Auth\LogoutListener;
+use App\Listeners\Auth\RegisteredListener;
+use App\Listeners\Auth\SocialLoginListener;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Logout;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -12,9 +20,10 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
-        ],
+        Login::class => [LoginListener::class],
+        Logout::class => [LogoutListener::class],
+        Registered::class => [RegisteredListener::class],
+        SocialLogin::class => [SocialLoginListener::class],
     ];
 
     /**
