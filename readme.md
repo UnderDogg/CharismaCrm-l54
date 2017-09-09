@@ -115,6 +115,7 @@ npm install
 ```
 
 Or for install just minimal package
+With admin privileges!
 
 ```
 npm install --global bower gulp

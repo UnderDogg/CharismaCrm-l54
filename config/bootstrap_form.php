@@ -1,9 +1,7 @@
 <?php
-
 use Watson\BootstrapForm\Type;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Form type
@@ -13,9 +11,7 @@ return [
     | the options of Type::HORIZONTAL, Type::VERTICAL and Type::INLINE.
     |
     */
-
     'type' => Type::VERTICAL,
-
     /*
     |--------------------------------------------------------------------------
     | Horizontal form default sizing
@@ -26,12 +22,9 @@ return [
     | wish.
     |
     */
-
-    'left_column_class'  => 'col-sm-2 col-md-3',
+    'left_column_class' => 'col-sm-2 col-md-3',
     'right_column_class' => 'col-sm-10 col-md-9',
-
     'left_column_offset_class' => 'col-sm-offset-2 col-md-offset-3',
-
     /*
     |--------------------------------------------------------------------------
     | Error output
@@ -41,7 +34,5 @@ return [
     | displayed or just the first one.
     |
     */
-
     'show_all_errors' => false
-
 ];
